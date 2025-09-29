@@ -1,0 +1,1 @@
+mongodb://<username>:<password>@2445b5de-efb1-4c2a-8954-6e9150ab2024.nam5.firestore.goog:443/default?loadBalanced=true&tls=true&authMechanism=SCRAM-SHA-256&retryWrites=false
