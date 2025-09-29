@@ -1,0 +1,28 @@
+// Kòmantè
+document.querySelectorAll('.comment-btn').forEach(btn => {
+    const photoId = btn.getAttribute('data-photo');
+    const input = document.getElementById('comment-input-' + photoId);
+    const list = document.getElementById('comment-list-' + photoId);
+
+    // Chaje kòmantè nan localStorage
+    let comments = JSON.parse(localStorage.getItem('comments-photo-' + photoId) || '[]');
+    comments.forEach(comment => {
+        const li = document.createElement('li');
+        li.textContent = comment;
+        list.appendChild(li);
+    });
+
+    btn.addEventListener('click', () => {
+        const text = input.value.trim();
+        if (text.length === 0) {
+            alert('Tanpri ekri yon kòmantè.');
+            return;
+        }
+        comments.push(text);
+        localStorage.setItem('comments-photo-' + photoId, JSON.stringify(comments));
+        const li = document.createElement('li');
+        li.textContent = text;
+        list.appendChild(li);
+        input.value = '';
+    });
+});
